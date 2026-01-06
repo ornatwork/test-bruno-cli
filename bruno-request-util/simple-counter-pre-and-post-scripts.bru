@@ -1,0 +1,54 @@
+meta {
+  name: simple-counter-pre-and-post-scripts
+  type: http
+  seq: 1
+  tags: [
+    util
+  ]
+}
+
+get {
+  url: https://docs.usebruno.com/
+  body: none
+  auth: inherit
+}
+
+script:pre-request {
+  // Update unique global counter ( _preCounter )
+  // Only update on iteration 0
+  
+  const currentCounter = Number(bru.getEnvVar("_preCounter")) || 0;
+  var newCounter = currentCounter + 1;
+  console.debug(`~~~ Updated, pre counter: ${newCounter}`);
+  bru.setEnvVar("_preCounter", '' + newCounter, { persist: true });
+  
+  newCounter = newCounter + 1;
+  console.debug(`~~~ Updated, pre counter: ${newCounter}`);
+  bru.setEnvVar("_preCounter", '' + newCounter, { persist: true });
+  
+  newCounter = newCounter + 1;
+  console.debug(`~~~ Updated, pre counter: ${newCounter}`);
+  bru.setEnvVar("_preCounter", '' + newCounter, { persist: true });
+  
+  
+  
+}
+
+script:post-response {
+  // Update unique global counter ( _postCounter )
+  const currentCounter = Number(bru.getEnvVar("_postCounter")) || 0;
+  var newCounter = currentCounter + 1;
+  console.debug(`~~~ Updated, post counter: ${newCounter}`);
+  bru.setEnvVar("_postCounter", '' + newCounter, { persist: true });
+  
+  newCounter = newCounter + 1;
+  console.debug(`~~~ Updated, post counter: ${newCounter}`);
+  bru.setEnvVar("_postCounter", '' + newCounter, { persist: true });
+  
+  newCounter = newCounter + 1;
+  console.debug(`~~~ Updated, post counter: ${newCounter}`);
+  bru.setEnvVar("_postCounter", '' + newCounter, { persist: true });
+  
+  
+  
+}
