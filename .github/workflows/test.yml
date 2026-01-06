@@ -38,5 +38,5 @@ jobs:
       - name: Run tests with util tag
         run: bru run --tags util --env local-dev
         env:
-          NODE_PATH: node_modules
+          NODE_PATH: ${{ github.workspace }}/node_modules
 
