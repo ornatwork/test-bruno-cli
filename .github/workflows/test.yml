@@ -20,14 +20,15 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      
-      - name: Configure npm authentication
-        run: |
-          echo "@paystra:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.READ_TOKEN }}" >> .npmrc
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@paystra'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READ_TOKEN }}
       
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READ_TOKEN }}
       
       - name: Install Bruno CLI
         run: npm install -g @usebruno/cli@2.15.1
