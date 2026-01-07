@@ -1,5 +1,19 @@
 {
-    "version": "1",
-    "name": "test-bruno-project",
-    "type": "collection"
+  "version": "1",
+  "name": "test-bruno-project",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "scripts": {
+    "moduleWhitelist": [
+      "terser",
+      "fs",
+      "path"
+    ],
+    "filesystemAccess": {
+      "allow": true
+    }
   }
+}

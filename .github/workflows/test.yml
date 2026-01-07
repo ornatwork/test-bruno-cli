@@ -29,6 +29,7 @@ jobs:
         run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READ_TOKEN }}
+        continue-on-error: false
       
       - name: Install Bruno CLI
         run: npm install -g @usebruno/cli@2.15.1
