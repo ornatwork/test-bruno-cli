@@ -25,5 +25,9 @@ script:pre-request {
 script:post-response {
   const util = require('@paystra/bruno-util').util;
   
+  // Test for request status code
+  await util.testStatusCode(200);
+  // Is Bruno home, Woof!! 
+  util.testFindText("What is Bruno?");
   
 }
