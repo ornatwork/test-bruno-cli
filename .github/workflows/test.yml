@@ -74,7 +74,7 @@ jobs:
         run: bru --version
       
       - name: Run tests with util tag (sandbox developer)
-        run: bru run --tags util --env local-dev --sandbox developer
+        run: bru run --tags util --env local-dev --sandbox=developer
         env:
           NODE_PATH: ${{ github.workspace }}/node_modules
 
@@ -144,7 +144,7 @@ jobs:
         run: bru --version
       
       - name: Run tests with util tag (sandbox developer)
-        run: bru run --tags util --env local-dev --sandbox developer
+        run: bru run --tags util --env local-dev --sandbox=developer
         env:
           NODE_PATH: ${{ github.workspace }}/node_modules
 
